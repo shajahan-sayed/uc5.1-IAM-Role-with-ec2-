@@ -19,7 +19,7 @@ resource "aws_iam_role" "ec2_role" {
 
 #creating the permission policy for S3,DYNAMODB,CLOUDWATCH
 resource "aws_iam_policy" "ec2_policy" {
-   policy = jsonecode ({
+   policy = jsonecode({
       version = "2012-10-17"
       statement = [
             {
