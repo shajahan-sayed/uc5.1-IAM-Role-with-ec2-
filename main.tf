@@ -4,11 +4,11 @@ resource "aws_iam_role" "ec2_role" {
 
 #trust policy
    assume_role_policy = jsonencode({
-      version = "2012-10-17"
-      statement = [
+      Version = "2012-10-17"
+      Statement = [
              {
                Effect = "Allow"
-               principal =  {
+               Principal =  {
           Service = "ec2.amazonaws.com"
         }
         Action = "sts:AssumeRole"
@@ -20,8 +20,8 @@ resource "aws_iam_role" "ec2_role" {
 #creating the permission policy for S3,DYNAMODB,CLOUDWATCH
 resource "aws_iam_policy" "ec2_policy" {
    policy = jsonencode({
-      version = "2012-10-17"
-      statement = [
+      Version = "2012-10-17"
+      Statement = [
             {
             Effect = "Allow"
            Action = [
