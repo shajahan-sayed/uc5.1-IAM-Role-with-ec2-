@@ -3,7 +3,7 @@ resource "aws_iam_role" "ec2_role" {
    name = "ec2_role"
 
 #trust policy
-   assume_role_policy = jsonecode({
+   assume_role_policy = jsonencode({
       version = "2012-10-17"
       statement = [
              {
@@ -19,7 +19,7 @@ resource "aws_iam_role" "ec2_role" {
 
 #creating the permission policy for S3,DYNAMODB,CLOUDWATCH
 resource "aws_iam_policy" "ec2_policy" {
-   policy = jsonecode({
+   policy = jsonencode({
       version = "2012-10-17"
       statement = [
             {
@@ -78,7 +78,7 @@ resource "aws_instance" "ec2_example" {
   ami           = var.ami_id
   instance_type = var.instance_type
 
-  aws_iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
+  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
 
   tags = {
     Name = "EC2WithIAMRole"
