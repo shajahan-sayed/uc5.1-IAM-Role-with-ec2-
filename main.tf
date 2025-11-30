@@ -69,14 +69,14 @@ resource "aws_iam_role_policy_attachment" "ec2_attach" {
 }
 
 #creating instance profile and attaching it to role
-resource "aws_iam_instance__profile" "ec2_instance_profile" {
+resource "aws_iam_instance_profile" "ec2_instance_profile" {
   name = "EC2AccessInstanceProfile"
   role = aws_iam_role.ec2_role.name
 }            
 
 resource "aws_instance" "ec2_example" {
-  ami           = var.ec2_ami
-  instance_type = var.ec2_instance_type
+  ami           = var.ami_id
+  instance_type = var.instance_type
 
   aws_iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
 
